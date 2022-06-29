@@ -47,14 +47,13 @@ def customYoutubeVideo():
     system('cls')
     print("Custom Youtube video.\n")
     youtubeLink = str(input("Enter Youtube Video ID: "))
-    # regex to extract Youtube video ID from URL
+    # Rxtract Youtube video ID from URL
     regex = re.compile(
         r'(https?://)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)/(watch\?v=|embed/|v/|.+\?v=)?(?P<id>[A-Za-z0-9\-=_]{11})')
     match = regex.match(youtubeLink)
     if not match:
         print('Invalid Youtube Link')
     else:
-        # vided ID will be used as file name
         scrapeCommentsOnVideo(match.group('id'), path.join(
             'files\\raw\\', match.group('id') + '.csv'), None)
         makeValidCSV(match.group('id'))
